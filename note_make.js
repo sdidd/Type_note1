@@ -2,7 +2,7 @@
 const AWS = require('aws-sdk');
 
 // Configure AWS with your region
-AWS.config.update({ region: 'eu-north-1' }); // Replace 'your-region' with your AWS region.
+AWS.config.update({ region: 'eu-north-1' }); 
 
 // Initialize the DynamoDB Document Client
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
@@ -10,7 +10,7 @@ const dynamoDB = new AWS.DynamoDB.DocumentClient();
 // Function to add a note to DynamoDB
 function addNoteToDynamoDB(noteText) {
     const params = {
-        TableName: 'NotesTable', // Replace 'YourTableName' with your DynamoDB table name
+        TableName: 'NotesTable', 
         Item: {
             NoteID: Date.now().toString(),
             NoteText: noteText,
@@ -30,7 +30,7 @@ function addNoteToDynamoDB(noteText) {
 // Function to fetch notes from DynamoDB (modify your showNotes function to use DynamoDB instead of local storage)
 function fetchNotesFromDynamoDB() {
     const params = {
-        TableName: 'NotesTable' // Replace 'YourTableName' with your DynamoDB table name
+        TableName: 'NotesTable' 
     };
 
     dynamoDB.scan(params, function(err, data) {
@@ -65,7 +65,7 @@ function showNotes() {
     fetchNotesFromDynamoDB(); // Fetch notes from DynamoDB
 }
 
-// Your existing addBtn event listener can remain here
+// addBtn event listener
 let addBtn = document.getElementById("addBtn");
 addBtn.addEventListener("click", function(e) {
     let addTxt = document.getElementById("addTxt").value;
@@ -73,7 +73,7 @@ addBtn.addEventListener("click", function(e) {
     document.getElementById("addTxt").value = ""; // Clear the input field
 });
 
-// Your existing deleteNote function can remain here
+//  deleteNote function 
 function deleteNote(index) {
     //   console.log("I am deleting", index);
 
