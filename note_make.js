@@ -74,19 +74,22 @@ addBtn.addEventListener("click", function(e) {
 });
 
 //  deleteNote function 
-function deleteNote(index) {
-    //   console.log("I am deleting", index);
+function deleteNote(noteID) {
+    const params = {
+        TableName: 'NotesTable',
+        Key: {
+            NoteID: noteID,
+        },
+    };
 
-    let notes = localStorage.getItem("notes");
-    if (notes == null) {
-        notesObj = [];
-    } else {
-        notesObj = JSON.parse(notes);
-    }
-
-    notesObj.splice(index, 1);
-    localStorage.setItem("notes", JSON.stringify(notesObj));
-    showNotes();
+    dynamoDB.delete(params, function (err, data) {
+        if (err) {
+            console.error("Unable to delete note. Error:", err);
+        } else {
+            console.log("Note deleted successfully.");
+            showNotes(); // Refresh the UI.
+        }
+    });
 }
 
 let search = document.getElementById('searchTxt');
