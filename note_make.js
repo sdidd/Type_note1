@@ -1,5 +1,6 @@
 // Import the AWS SDK for JavaScript
-const AWS = require('aws-sdk');
+//import AWS from 'aws-sdk';
+//const AWS = require('aws-sdk');
 
 // Configure AWS with your region
 AWS.config.update({ region: 'eu-north-1' }); 
