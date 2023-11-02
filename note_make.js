@@ -3,7 +3,12 @@
 //const AWS = require('aws-sdk');
 
 // Configure AWS with your region
-AWS.config.update({ region: 'eu-north-1' }); 
+AWS.config.update({
+    accessKeyId: 'AKIAZF4PI77KN62VEDUN',
+    secretAccessKey: '8TiuKPMAe+OJRNiiKNuqBbmZlDnsaERrpHZKMQvd',
+    region: 'eu-north-1' // Replace with your region
+});
+
 
 // Initialize the DynamoDB Document Client
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
